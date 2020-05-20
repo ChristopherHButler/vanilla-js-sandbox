@@ -1,4 +1,4 @@
-var path = require('path');
+const path = require('path');
 
 
 module.exports = {
@@ -12,7 +12,23 @@ module.exports = {
     compress: true,
     port: 9000,
     hot: true,
-    publicPath: '/'
+    publicPath: '/',
+    stats: {
+      colors: true,
+      hash: false,
+      version: false,
+      timings: false,
+      assets: false,
+      chunks: false,
+      modules: false,
+      reasons: false,
+      children: false,
+      source: false,
+      errors: false,
+      errorDetails: false,
+      warnings: false,
+      publicPath: false
+    }
   },
   module: {
     rules: [
@@ -20,7 +36,11 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: ['babel-loader']
-      }
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
     ]
   }
 };
